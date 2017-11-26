@@ -1,0 +1,12 @@
+c:\Users\ponyv.desktop-q6bbd27\OneDrive\documents\visual studio 2015\Projects\Task01\Task02\bin\Debug\Task02.exe.config
+c:\Users\ponyv.desktop-q6bbd27\OneDrive\documents\visual studio 2015\Projects\Task01\Task02\bin\Debug\Task02.exe
+c:\Users\ponyv.desktop-q6bbd27\OneDrive\documents\visual studio 2015\Projects\Task01\Task02\bin\Debug\Task02.pdb
+c:\Users\ponyv.desktop-q6bbd27\OneDrive\documents\visual studio 2015\Projects\Task01\Task02\obj\Debug\Task02.csprojResolveAssemblyReference.cache
+c:\Users\ponyv.desktop-q6bbd27\OneDrive\documents\visual studio 2015\Projects\Task01\Task02\obj\Debug\Task02.exe
+c:\Users\ponyv.desktop-q6bbd27\OneDrive\documents\visual studio 2015\Projects\Task01\Task02\obj\Debug\Task02.pdb
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\Visual Studio 2015\Projects\HMT_01\Task02\bin\Debug\Task02.exe.config
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\Visual Studio 2015\Projects\HMT_01\Task02\obj\Debug\Task02.exe
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\Visual Studio 2015\Projects\HMT_01\Task02\obj\Debug\Task02.pdb
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\Visual Studio 2015\Projects\HMT_01\Task02\bin\Debug\Task02.exe
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\Visual Studio 2015\Projects\HMT_01\Task02\bin\Debug\Task02.pdb
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\Visual Studio 2015\Projects\HMT_01\Task02\obj\Debug\Task02.csprojResolveAssemblyReference.cache

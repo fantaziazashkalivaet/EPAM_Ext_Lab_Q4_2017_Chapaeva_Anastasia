@@ -1,0 +1,6 @@
+c:\users\ponyv.desktop-q6bbd27\onedrive\documents\visual studio 2015\Projects\Task01\Task01\bin\Debug\Task01.exe.config
+c:\users\ponyv.desktop-q6bbd27\onedrive\documents\visual studio 2015\Projects\Task01\Task01\obj\Debug\Task01.csprojResolveAssemblyReference.cache
+c:\users\ponyv.desktop-q6bbd27\onedrive\documents\visual studio 2015\Projects\Task01\Task01\bin\Debug\Task01.exe
+c:\users\ponyv.desktop-q6bbd27\onedrive\documents\visual studio 2015\Projects\Task01\Task01\bin\Debug\Task01.pdb
+c:\users\ponyv.desktop-q6bbd27\onedrive\documents\visual studio 2015\Projects\Task01\Task01\obj\Debug\Task01.exe
+c:\users\ponyv.desktop-q6bbd27\onedrive\documents\visual studio 2015\Projects\Task01\Task01\obj\Debug\Task01.pdb
