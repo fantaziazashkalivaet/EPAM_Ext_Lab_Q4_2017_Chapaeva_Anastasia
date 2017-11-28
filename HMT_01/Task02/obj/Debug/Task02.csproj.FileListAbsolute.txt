@@ -10,3 +10,9 @@ C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\Visual Studio 2015\Projects\HM
 C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\Visual Studio 2015\Projects\HMT_01\Task02\bin\Debug\Task02.exe
 C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\Visual Studio 2015\Projects\HMT_01\Task02\bin\Debug\Task02.pdb
 C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\Visual Studio 2015\Projects\HMT_01\Task02\obj\Debug\Task02.csprojResolveAssemblyReference.cache
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\EPAM_Ext_Lab_Q4_2017_Chapaeva_Anastasia\HMT_01\Task02\bin\Debug\Task02.exe.config
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\EPAM_Ext_Lab_Q4_2017_Chapaeva_Anastasia\HMT_01\Task02\obj\Debug\Task02.exe
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\EPAM_Ext_Lab_Q4_2017_Chapaeva_Anastasia\HMT_01\Task02\obj\Debug\Task02.pdb
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\EPAM_Ext_Lab_Q4_2017_Chapaeva_Anastasia\HMT_01\Task02\bin\Debug\Task02.exe
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\EPAM_Ext_Lab_Q4_2017_Chapaeva_Anastasia\HMT_01\Task02\bin\Debug\Task02.pdb
+C:\Users\ponyv.DESKTOP-Q6BBD27\OneDrive\Documents\EPAM_Ext_Lab_Q4_2017_Chapaeva_Anastasia\HMT_01\Task02\obj\Debug\Task02.csprojResolveAssemblyReference.cache
