@@ -1,0 +1,45 @@
+﻿namespace Task02
+{
+    using System;
+
+    public class Logic
+    {
+        public static void PrintTriangle(int n)
+        {
+            var stars = "*";
+
+            for (var i = 0; i < n; i++)
+            {
+                Console.WriteLine(stars);
+                stars += "*";
+            }
+        }
+
+        public static int SetPositiveValue(string name)
+        {
+            int value = SetValue(name);
+
+            if (value <= 0)
+            {
+                Console.WriteLine("Incorrect data entered.");
+                value = SetPositiveValue(name);
+            }
+
+            return value;
+        }
+
+        public static int SetValue(string name)
+        {
+            Console.WriteLine("Enter {0}:", name);
+            double value;
+
+            if (!double.TryParse(Console.ReadLine(), out value))
+            {
+                Console.WriteLine("Incorrect data entered.");
+                value = SetValue(name);
+            }
+
+            return (int)value;
+        }
+    }
+}
