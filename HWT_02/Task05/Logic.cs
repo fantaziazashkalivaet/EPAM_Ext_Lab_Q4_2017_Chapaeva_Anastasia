@@ -1,39 +1,25 @@
 ﻿namespace Task05
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     public class Logic
     {
-        public static int Calc(int n)
+        public static int Calc(int n, int dividThree, int dividFive)
         {
-            var listAllElem = new List<int>();
-            int dividThree = 3;
-            int dividFive = 5;
-
-            for (; dividThree < n || dividFive < n; dividThree += 3, dividFive += 5)
-            {
-                if (!listAllElem.Contains(dividThree))
-                {
-                    listAllElem.Add(dividThree);
-                }
-
-                if (!listAllElem.Contains(dividFive) && dividFive < n)
-                {
-                    listAllElem.Add(dividFive);
-                }
-            }
-
-            IEnumerable<int> listElem = listAllElem.Distinct();
-
-            int count = 0;
-
-            foreach (var element in listElem)
-            {
-                count += element;
-            }
+            int count = SumDiv(dividThree, n);
+            count += SumDiv(dividFive, n);
+            count -= SumDiv(dividThree * dividFive, n);
 
             return count;
+        }
+
+        public static int SumDiv(int div, int end)
+        {
+            int sum = 0;
+            for (var i = div; i < end; i += div)
+            {
+                sum += i;
+            }
+
+            return sum;
         }
     }
 }
