@@ -5,6 +5,10 @@
 
     public class Logic
     {
+        /// <summary>
+        /// Вывод треугольника
+        /// </summary>
+        /// <param name="n">Высота треугольника</param>
         public static void PrintTriangle(int n)
         {
             var stars = new StringBuilder();
@@ -22,6 +26,11 @@
             }
         }
 
+        /// <summary>
+        /// Проверка и ввод положительного числа
+        /// </summary>
+        /// <param name="name">Имя параметра</param>
+        /// <returns>Введенное число</returns>
         public static int SetPositiveValue(string name)
         {
             int value = SetValue(name);
@@ -35,6 +44,11 @@
             return value;
         }
 
+        /// <summary>
+        /// Проверка и ввод числа
+        /// </summary>
+        /// <param name="name">Имя параметра</param>
+        /// <returns>Введенное число</returns>
         public static int SetValue(string name)
         {
             Console.WriteLine("Enter {0}:", name);
