@@ -27,7 +27,7 @@ namespace Task01
             }
             while (cki.Key != ConsoleKey.Escape);
 
-            Console.ReadKey();
-        }
+            Console.ReadKey();//todo pn лишнее
+		}
     }
 }

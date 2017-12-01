@@ -15,7 +15,7 @@ namespace Task06
         {
             var text = new TextStyle();
 
-            while (true)
+            while (true)//todo pn а как выйти из программы, не нажимая крестика?
             {
                 text.StyleInfo();
                 Console.WriteLine("Text style:\n\t1: bold\n\t2: italic\n\t3: underline");

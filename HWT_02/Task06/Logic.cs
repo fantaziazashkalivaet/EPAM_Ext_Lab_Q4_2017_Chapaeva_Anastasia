@@ -37,7 +37,7 @@
         {
             int value = SetValue();
 
-            if (value > 3 || value < 1)
+            if (value > 3 || value < 1)//todo pn хардкод
             {
                 Console.WriteLine("Incorrect data entered.");
                 value = CheckValue();
