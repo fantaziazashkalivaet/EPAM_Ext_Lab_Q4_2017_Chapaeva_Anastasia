@@ -14,14 +14,13 @@ namespace Task06
         public static void Main(string[] args)
         {
             var text = new TextStyle();
+            bool exit = false;
 
-            while (true)
+            while (!exit)
             {
                 text.StyleInfo();
                 Console.WriteLine("Text style:\n\t1: bold\n\t2: italic\n\t3: underline");
-
-                int action = Logic.CheckValue();
-                Logic.CheckAction(action, text);
+                exit = Logic.ReadAction(text);
             }
         }
     }

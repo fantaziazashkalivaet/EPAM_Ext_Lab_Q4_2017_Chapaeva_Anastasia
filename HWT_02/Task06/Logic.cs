@@ -4,25 +4,48 @@
 
     public class Logic
     {
-        public static void CheckAction(int action, TextStyle text)
+        public static bool ReadAction(TextStyle text)
         {
+            Console.WriteLine("Enter a number (1-3) to format the text or \"exit\" to complete:");
+            string action = Console.ReadLine();
+            return Logic.CheckAction(action, text);
+        }
+
+        public static bool CheckAction(string action, TextStyle text)
+        {
+            bool exit = false;
+            action = action.ToLower();
+
             switch (action)
             {
-                case 1:
+                case "1":
                     {
                         text.ChangeBold();
                         break;
                     }
 
-                case 2:
+                case "2":
                     {
                         text.ChangeItalic();
                         break;
                     }
 
-                case 3:
+                case "3":
                     {
                         text.ChangeUnderline();
+                        break;
+                    }
+
+                case "exit":
+                    {
+                        exit = true;
+                        break;
+                    }
+
+                default:
+                    {
+                        Console.WriteLine("Incorrect data entered. Enter again:");
+                        ReadAction(text);
                         break;
                     }
             }
@@ -31,33 +54,8 @@
             {
                 text.StyleNone();
             }
-        }
 
-        public static int CheckValue()
-        {
-            int value = SetValue();
-
-            if (value > 3 || value < 1)
-            {
-                Console.WriteLine("Incorrect data entered.");
-                value = CheckValue();
-            }
-
-            return value;
-        }
-
-        public static int SetValue()
-        {
-            Console.WriteLine("Enter number:");
-            double value;
-
-            if (!double.TryParse(Console.ReadLine(), out value))
-            {
-                Console.WriteLine("Incorrect data entered.");
-                value = SetValue();
-            }
-
-            return (int)value;
+            return exit;
         }
     }
 }

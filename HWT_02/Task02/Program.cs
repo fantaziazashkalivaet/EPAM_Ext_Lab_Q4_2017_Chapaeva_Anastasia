@@ -22,8 +22,6 @@ namespace Task02
                 cki = Console.ReadKey();
             }
             while (cki.Key != ConsoleKey.Escape);
-
-            Console.ReadKey();
         }
     }
 }
