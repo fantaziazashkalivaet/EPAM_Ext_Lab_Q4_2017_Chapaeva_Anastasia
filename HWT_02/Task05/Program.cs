@@ -14,6 +14,6 @@ namespace Task05
             int n = 1000;
             Console.WriteLine("Сумма всех чисел меньше 1000: {0}", Logic.Calc(n, 3, 5));
             Console.ReadKey();
-        }
+		}
     }
 }

@@ -54,7 +54,6 @@
             {
                 text.StyleNone();
             }
-
             return exit;
         }
     }

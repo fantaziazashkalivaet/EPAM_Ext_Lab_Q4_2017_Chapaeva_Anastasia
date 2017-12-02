@@ -23,6 +23,6 @@ namespace Task03
                 cki = Console.ReadKey();
             }
             while (cki.Key != ConsoleKey.Escape);
-        }
+		}
     }
 }
