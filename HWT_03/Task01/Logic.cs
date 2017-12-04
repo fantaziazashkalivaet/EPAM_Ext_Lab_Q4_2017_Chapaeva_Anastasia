@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Text;
 
     public class Logic
     {
@@ -27,11 +28,11 @@
         {
             if (arr.Array != null && arr.Array.Count() != 0)
             {
-                string s = null;
+                var s = new StringBuilder();
 
                 foreach (var e in arr.Array)
                 {
-                    s += e + " ";
+                    s.AppendFormat("{0} ", e);
                 }
 
                 Console.WriteLine("Array: " + s);
