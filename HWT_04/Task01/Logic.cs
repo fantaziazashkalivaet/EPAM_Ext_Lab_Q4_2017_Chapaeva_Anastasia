@@ -19,6 +19,7 @@
                         break;
                     }
 
+                case "":
                 case null:
                     {
                         PrintStringIsEmpty();
