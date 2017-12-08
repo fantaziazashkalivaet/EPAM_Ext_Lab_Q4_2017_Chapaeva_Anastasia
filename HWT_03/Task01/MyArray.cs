@@ -67,7 +67,7 @@
         {
             get
             {
-                return this.maxIndex;
+                return this.maxIndex;//todo pn this предупреждения StyleCop тоже можно пропускать. Это не обязательно.
             }
 
             set
