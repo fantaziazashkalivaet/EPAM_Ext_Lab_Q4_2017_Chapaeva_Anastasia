@@ -46,7 +46,7 @@
 
         public static string[] StringToWords(string str)
         {
-            var separators = new char[] { ' ', '\t' };
+            var separators = new char[] { ' ', '\t' };//todo pn используй специальный метод Char.IsSeparator
             return str.Split(separators);
         }
 
