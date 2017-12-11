@@ -36,7 +36,7 @@
 
                         foreach (var letter in str)
                         {
-                            strSecond.Replace(string.Format("{0}", letter), string.Format("{0}{1}", letter, letter));
+                            strSecond.Replace(string.Format("{0}", letter)/*todo pn не понял прикола? почему просто letter не передать?*/, string.Format("{0}{1}", letter, letter));
                         }
 
                         Console.WriteLine("New string: {0}", strSecond);

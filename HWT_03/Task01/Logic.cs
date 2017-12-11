@@ -57,34 +57,34 @@
 
             switch (command)
             {
-                case "1":
-                    {
-                        PrintMaxOrMin(array, "Maximum", array.GetMax());
+                case "1"://todo pn хардкод 
+					{
+                        PrintMaxOrMin(array, "Maximum", array.GetMax());//todo pn хардкод
                         break;
                     }
 
-                case "2":
-                    {
-                        PrintMaxOrMin(array, "Minimum", array.GetMin());
-                        break;
+                case "2"://todo pn хардкод
+					{
+                        PrintMaxOrMin(array, "Minimum", array.GetMin());//todo pn хардкод
+						break;
                     }
 
-                case "3":
-                    {
+                case "3"://todo pn хардкод
+					{
                         array.Sort();
                         PrintArray(array);
                         Console.WriteLine();
                         break;
                     }
 
-                case "exit":
-                    {
+                case "exit"://todo pn хардкод можно в enum вынести, например
+					{
                         exit = true;
                         break;
                     }
 
-                case "new":
-                    {
+                case "new"://todo pn хардкод
+					{
                         newArray = true;
                         break;
                     }

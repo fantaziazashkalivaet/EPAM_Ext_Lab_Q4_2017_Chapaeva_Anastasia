@@ -21,7 +21,7 @@
 
                 for (var j = 0; j < quantityIter; j++)
                 {
-                    str += "*";
+                    str += "*";//todo pn хардкод
                 }
 
                 watch.Stop();
@@ -45,8 +45,8 @@
 
                 for (var j = 0; j < quantityIter; j++)
                 {
-                    str.Append("*");
-                }
+                    str.Append("*");//todo pn хардкод
+				}
 
                 watch.Stop();
                 logs.Add(watch.ElapsedMilliseconds);
@@ -73,10 +73,10 @@
 
         public static void PrintResult()
         {
-            int quantityIter = 10000;
-            int quantityOper = 10;
+            int quantityIter = 10000;//todo pn хардкод
+			int quantityOper = 10;//todo pn хардкод
 
-            Console.WriteLine("String:");
+			Console.WriteLine("String:");
 
             var timeString = WatchString(quantityIter, quantityOper);
             PrintLogs(timeString, quantityIter, quantityOper);
