@@ -1,5 +1,6 @@
 ﻿namespace Task04
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
@@ -114,6 +115,11 @@
             return !(first == second);
         }
 
+        public static MyString ToMyString(char[] arr)
+        {
+            return new MyString(arr);
+        }
+
         public override string ToString()
         {
             var s = new StringBuilder();
@@ -217,6 +223,151 @@
             }
 
             return this;
+        }
+
+        public MyString Replace(char newSymbol, char oldSymbol)
+        {
+            if (myString != null)
+            {
+                var newStr = myString;
+                for (var i = 0; i < myString.Length; i++)
+                {
+                    if (myString[i] == oldSymbol)
+                    {
+                        newStr[i] = newSymbol;
+                    }
+                }
+            }
+
+            return this;
+        }
+
+        public int IndexOf(char symbol)
+        {
+            if (myString != null)
+            {
+                return IndexOf(symbol, 0, myString.Length);
+            }
+
+            return -1;
+        }
+
+        public int IndexOf(char symbol, int start, int end)
+        {
+            int count = -1;
+            if (myString != null)
+            {
+                if (!(start < 0 || start > myString.Count() || end < start || end > myString.Count()))
+                {
+                    for (var i = start; i < end; i++)
+                    {
+                        if (myString[i] == symbol)
+                        {
+                            count = i;
+                            return count;
+                        }
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        public int IndexOf(string s)
+        {
+            int count = -1;
+            if (myString != null)
+            {
+                for (var i = 0; i < myString.Length; i++)
+                {
+                    if (i + s.Length < myString.Length)
+                    {
+                        for (var j = 0; j < s.Length; j++)
+                        {
+                            if (s[j] != myString[i + j])
+                            {
+                                break;
+                            }
+
+                            if (j == s.Length - 1)
+                            {
+                                return i;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        public MyString Insert(string s, int start)
+        {
+            if (myString.Length != 0)
+            {
+                if (start >= myString.Length || start < 0)
+                {
+                    return this;
+                }
+
+                var size = myString.Length + s.Length;
+                var newMyString = new MyString(size);
+                for (var i = 0; i < size; i++)
+                {
+                    if (i < start)
+                    {
+                        newMyString[i] = myString[i];
+                    }
+                    else
+                    if (i < start + s.Length)
+                    {
+                        newMyString[i] = s[i - start];
+                    }
+                    else
+                    {
+                        newMyString[i] = myString[start + i - s.Length];
+                    }
+                }
+
+                return newMyString;
+            }
+
+            return this;
+        }
+
+        public MyString[] Split()
+        {
+            if (myString == null)
+            { 
+                return new MyString[1] { this };
+            }
+            
+            var count = new List<MyString>();
+
+            for (var j = 0; j < myString.Length; j++)
+            {
+                var parts = new List<char>();
+
+                while (!char.IsSeparator(myString[j]))
+                {
+                    parts.Add(myString[j]);
+                    if (j < myString.Length - 1)
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (parts != null)
+                {
+                    count.Add(ToMyString(parts.ToArray()));
+                }
+            }
+
+            return count.ToArray();
         }
     }
 }
