@@ -1,82 +1,58 @@
 ﻿namespace Task04
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    public abstract class Сreature : Point
+    public abstract class Сreature
     {
         private const int Step = 1;
+        private Point position;
+
+        public Point Position
+        {
+            get
+            {
+                return position;
+            }
+
+            set
+            {
+                position = value;
+            }
+        }
 
         public void MoveRight(int widthMax)
         {
-            if (X <= widthMax - Step)
+            if (position.X <= widthMax - Step)
             {
-                X += Step;
+                position.X += Step;
             }
         }
 
         public void MoveLeft(int widthMin)
         {
-            if (X >= widthMin + Step)
+            if (position.X >= widthMin + Step)
             {
-                X -= Step;
+                position.X -= Step;
             }
         }
 
         public void MoveUp(int heightMax)
         {
-            if (Y <= heightMax - Step)
+            if (position.Y <= heightMax - Step)
             {
-                Y += Step;
+                position.Y += Step;
             }
         }
 
         public void MoveDown(int heightMin)
         {
-            if (Y <= heightMin + Step)
+            if (position.Y <= heightMin + Step)
             {
-                Y -= Step;
+                position.Y -= Step;
             }
         }
 
-        public void Move(Side side, TypePoint[,] map)
+        public void Move(Side side)
         {
-            switch (side)
-            {
-                case Side.left:
-                    {
-                        if (X <= map.GetLength(2) - 1)
-                        {
-                            if (map[X, Y] == TypePoint.obctacle || map[X, Y] == TypePoint.bonus)
-                            {
-                                // ??
-                            }
-                        }
-
-                        break;
-                    }
-
-                case Side.rigth:
-                    {
-                        // smth
-                        break;
-                    }
-
-                case Side.up:
-                    {
-                        // smth
-                        break;
-                    }
-
-                case Side.down:
-                    {
-                        // smth
-                        break;
-                    }
-            }
+            // всякие проверки
         }
     }
 }
