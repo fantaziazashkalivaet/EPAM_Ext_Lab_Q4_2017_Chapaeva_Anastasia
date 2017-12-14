@@ -303,7 +303,7 @@
 
         public MyString Insert(string s, int start)
         {
-            if (myString.Length != 0)
+            if (myString != null)
             {
                 if (start >= myString.Length || start < 0)
                 {
