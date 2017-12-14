@@ -1,7 +1,7 @@
 ﻿namespace Task04
 {
-    public abstract class Сreature
-    {
+    public abstract class Сreature //todo pn ещё один такой же класс? для чего
+	{
         private const int Step = 1;
         private Point position;
 

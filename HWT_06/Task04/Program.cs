@@ -2,8 +2,8 @@
 
 namespace Task04
 {
-    public class Program
-    {
+    public class Program//todo pn для чего он здесь?
+	{
         public static void Main(string[] args)
         {
         }

@@ -7,11 +7,11 @@
 
         public Rectangle()
         {
-            CentreX = 0;
-            CentreY = 0;
-            Width = 1;
-            Height = 1;
-        }
+            CentreX = 0;//todo pn хардкод
+			CentreY = 0;//todo pn хардкод
+			Width = 1;//todo pn хардкод
+            Height = 1;//todo pn хардкод
+		}
 
         public Rectangle(double centreX, double centreY, double width, double height)
         {
@@ -36,8 +36,8 @@
                 }
                 else
                 {
-                    width = 1;
-                }
+                    width = 1;//todo pn хардкод
+				}
             }
         }
 
@@ -56,8 +56,8 @@
                 }
                 else
                 {
-                    height = 1;
-                }
+                    height = 1;//todo pn хардкод
+				}
             }
         }
 

@@ -7,9 +7,9 @@
 
         public Point()
         {
-            X = 0;
-            Y = 0;
-        }
+            X = 0;//todo pn хардкод
+            Y = 0;//todo pn хардкод
+		}
 
         public Point(int x, int y)
         {

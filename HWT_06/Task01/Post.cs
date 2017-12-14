@@ -1,6 +1,6 @@
 ﻿namespace Task01
 {
-    public enum Post
+    public enum Post //todo pn position is better
     {
         director,
         manager,

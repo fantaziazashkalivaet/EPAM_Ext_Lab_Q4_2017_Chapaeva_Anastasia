@@ -10,7 +10,7 @@
 
         public Ring() : base()
         {
-            InnerRadius = 0;
+            InnerRadius = 0;//todo pn hardcode
         }
 
         public Ring(double centreX, double centreY, double radius, double innerRadius) : base(centreX, centreY, radius)
