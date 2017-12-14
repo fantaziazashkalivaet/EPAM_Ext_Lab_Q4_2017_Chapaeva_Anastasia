@@ -43,10 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apple.cs" />
+    <Compile Include="Bonus.cs" />
+    <Compile Include="Grass.cs" />
+    <Compile Include="IBonus.cs" />
+    <Compile Include="ICreature.cs" />
+    <Compile Include="Medicament.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Point.cs" />
+    <Compile Include="Pony.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types.cs" />
+    <Compile Include="Creature.cs" />
+    <Compile Include="Rock.cs" />
+    <Compile Include="Side.cs" />
+    <Compile Include="Space.cs" />
+    <Compile Include="Unicorn.cs" />
+    <Compile Include="Water.cs" />
     <Compile Include="Сreature.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

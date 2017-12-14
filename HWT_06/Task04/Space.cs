@@ -1,6 +1,6 @@
 ﻿namespace Task04
 {
-    public abstract class Bonus : IBonus
+    public abstract class Space
     {
         private Point position;
 
@@ -17,6 +17,6 @@
             }
         }
 
-        public abstract void Improve(Player player);
+        public abstract bool IsMove();
     }
 }

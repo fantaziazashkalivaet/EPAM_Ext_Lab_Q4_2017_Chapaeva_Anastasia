@@ -4,20 +4,17 @@
     {
         private int x;
         private int y;
-        private TypePoint type;
 
         public Point()
         {
             X = 0;
             Y = 0;
-            Type = TypePoint.obctacle;
         }
 
-        public Point(int x, int y, TypePoint type)
+        public Point(int x, int y)
         {
             X = x;
             Y = y;
-            Type = type;
         }
 
         public int X
@@ -43,19 +40,6 @@
             set
             {
                 y = value;
-            }
-        }
-
-        public TypePoint Type
-        {
-            get
-            {
-                return type;
-            }
-
-            set
-            {
-                type = value;
             }
         }
     }
