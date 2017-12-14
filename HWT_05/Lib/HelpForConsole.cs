@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class HelpForConsole
+    public class HelpForConsole //todo pn хорошо придумала, молодец
     {
         public static void PrintMenu(ClassName className)
         {
