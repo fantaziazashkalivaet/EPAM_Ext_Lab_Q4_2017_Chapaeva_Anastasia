@@ -6,16 +6,16 @@
     {
         public static void PrintMenu()
         {
-            Console.WriteLine("Enter a number to create a figure or end a program:");
+            Console.WriteLine("Enter a number to add a figure or end:");
             Console.WriteLine("\t{0}: create a {1};", (int)FigureType.Line, FigureType.Line);
             Console.WriteLine("\t{0}: create a {1};", (int)FigureType.Rectangle, FigureType.Rectangle);
             Console.WriteLine("\t{0}: create a {1};", (int)FigureType.Circle, FigureType.Circle);
             Console.WriteLine("\t{0}: create a {1};", (int)FigureType.Round, FigureType.Round);
             Console.WriteLine("\t{0}: create a {1};", (int)FigureType.Ring, FigureType.Ring);
-            Console.WriteLine("\t0: exit.");
+            Console.WriteLine("\t0: end.");
         }
 
-        public static bool CheckCommand()
+        public static bool CheckCommand(ref Figures figures)
         {
             Random r = new Random();
             var command = SetCommand();
@@ -26,57 +26,40 @@
                 case (int)FigureType.Line:
                     {
                         var figure = new Line(r.Next(1, 100), r.Next(1, 100), r.Next(1, 100));
-                        Console.WriteLine("{0}: centre = ({1}, {2}), length = {3}",
-                            figure.ReturnType(),
-                            figure.CentreX,
-                            figure.CentreY,
-                            figure.Length);
+                        figures.SetFigures(figure);
+                        Console.WriteLine(figure.Info());
                         break;
                     }
 
                 case (int)FigureType.Rectangle:
                     {
                         var figure = new Rectangle(r.Next(1, 100), r.Next(1, 100), r.Next(1, 100), r.Next(1, 100));
-                        Console.WriteLine("{0}: centre = ({1}, {2}), width = {3}, height = {4}",
-                            figure.ReturnType(), 
-                            figure.CentreX, 
-                            figure.CentreY, 
-                            figure.Width, 
-                            figure.Height);
+                        figures.SetFigures(figure);
+                        Console.WriteLine(figure.Info());
                         break;
                     }
 
                 case (int)FigureType.Circle:
                     {
                         var figure = new Circle(r.Next(1, 100), r.Next(1, 100), r.Next(1, 100));
-                        Console.WriteLine("{0}: centre = ({1}, {2}), radius = {3}",
-                            figure.ReturnType(),
-                            figure.CentreX,
-                            figure.CentreY,
-                            figure.Radius);
+                        figures.SetFigures(figure);
+                        Console.WriteLine(figure.Info());
                         break;
                     }
 
                 case (int)FigureType.Round:
                     {
                         var figure = new Round(r.Next(1, 100), r.Next(1, 100), r.Next(1, 100));
-                        Console.WriteLine("{0}: centre = ({1}, {2}), radius = {3}",
-                            figure.ReturnType(),
-                            figure.CentreX,
-                            figure.CentreY,
-                            figure.Radius);
+                        figures.SetFigures(figure);
+                        Console.WriteLine(figure.Info());
                         break;
                     }
 
                 case (int)FigureType.Ring:
                     {
                         var figure = new Ring(r.Next(1, 100), r.Next(1, 100), r.Next(1, 100), r.Next(1, 100));
-                        Console.WriteLine("{0}: centre = ({1}, {2}), outer radius = {3}, inner radius = {4}",
-                            figure.ReturnType(),
-                            figure.CentreX,
-                            figure.CentreY,
-                            figure.Radius,
-                            figure.OuterRadius);
+                        figures.SetFigures(figure);
+                        Console.WriteLine(figure.Info());
                         break;
                     }
 
@@ -89,7 +72,7 @@
                 default:
                     {
                         Console.WriteLine("Command does not exist.");
-                        exit = CheckCommand();
+                        exit = CheckCommand(ref figures);
                         break;
                     }
             }

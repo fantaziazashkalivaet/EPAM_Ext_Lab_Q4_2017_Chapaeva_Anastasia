@@ -35,5 +35,7 @@
         {
                 return FigureType.Figure;
         }
+
+        public abstract string Info();
     }
 }

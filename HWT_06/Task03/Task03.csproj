@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Circle.cs" />
     <Compile Include="Figure.cs" />
+    <Compile Include="Figures.cs" />
     <Compile Include="FigureType.cs" />
     <Compile Include="ForConsole.cs" />
     <Compile Include="Line.cs" />

@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Task04
+﻿namespace Task04
 {
-    class Point
+    public class Point
     {
         private int x;
         private int y;
+        private TypePoint type;
 
         public Point()
         {
             X = 0;
             Y = 0;
+            Type = TypePoint.obctacle;
         }
 
-        public Point(int x, int y)
+        public Point(int x, int y, TypePoint type)
         {
-            this.X = x;
-            this.Y = y;
+            X = x;
+            Y = y;
+            Type = type;
         }
 
         public int X
@@ -46,6 +43,19 @@ namespace Task04
             set
             {
                 y = value;
+            }
+        }
+
+        public TypePoint Type
+        {
+            get
+            {
+                return type;
+            }
+
+            set
+            {
+                type = value;
             }
         }
     }

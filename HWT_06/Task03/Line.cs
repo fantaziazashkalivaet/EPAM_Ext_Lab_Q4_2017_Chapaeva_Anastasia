@@ -42,5 +42,10 @@
         {
             return FigureType.Line;
         }
+
+        public override string Info()
+        {
+            return string.Format("{0}: centre = ({1}, {2}), length = {3}", this.ReturnType(), CentreX, CentreY, Length);
+        }
     }
 }

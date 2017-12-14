@@ -49,5 +49,15 @@
             double distance = Math.Sqrt((x * x) - (y * y));
             return Radius <= distance && distance <= OuterRadius;
         }
+
+        public override string Info()
+        {
+            return string.Format("{0}: centre = ({1}, {2}), outer radius = {3}, inner radius = {4}",
+                this.ReturnType(),
+                CentreX,
+                CentreY,
+                OuterRadius,
+                Radius);
+        }
     }
 }

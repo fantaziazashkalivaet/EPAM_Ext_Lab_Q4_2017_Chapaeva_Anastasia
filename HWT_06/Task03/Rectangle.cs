@@ -65,5 +65,10 @@
         {
             return FigureType.Rectangle;
         }
+
+        public override string Info()
+        {
+            return string.Format("{0}: centre = ({1}, {2}), width = {3}, height = {4}", this.ReturnType(), CentreX, CentreY, Width, Height);
+        }
     }
 }

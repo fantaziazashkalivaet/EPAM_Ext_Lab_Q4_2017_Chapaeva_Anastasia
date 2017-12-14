@@ -1,44 +1,81 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Task04
+﻿namespace Task04
 {
-    class Сreature
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public abstract class Сreature : Point
     {
-        private Point position;
+        private const int Step = 1;
 
-        public void MoveRight(int WidthMax, int step)
+        public void MoveRight(int widthMax)
         {
-            if (position.X <= WidthMax - step)
+            if (X <= widthMax - Step)
             {
-                position.X += step;
+                X += Step;
             }
         }
 
-        public void MoveLeft(int WidthMin, int step)
+        public void MoveLeft(int widthMin)
         {
-            if (position.X >= WidthMin + step)
+            if (X >= widthMin + Step)
             {
-                position.X -= step;
+                X -= Step;
             }
         }
 
-        public void MoveUp(int HeightMax, int step)
+        public void MoveUp(int heightMax)
         {
-            if (position.Y <= HeightMax - step)
+            if (Y <= heightMax - Step)
             {
-                position.Y += step;
+                Y += Step;
             }
         }
 
-        public void MoveDown(int HeightMin, int step)
+        public void MoveDown(int heightMin)
         {
-            if (position.Y <= HeightMin + step)
+            if (Y <= heightMin + Step)
             {
-                position.Y -= step;
+                Y -= Step;
+            }
+        }
+
+        public void Move(Side side, TypePoint[,] map)
+        {
+            switch (side)
+            {
+                case Side.left:
+                    {
+                        if (X <= map.GetLength(2) - 1)
+                        {
+                            if (map[X, Y] == TypePoint.obctacle || map[X, Y] == TypePoint.bonus)
+                            {
+                                // ??
+                            }
+                        }
+
+                        break;
+                    }
+
+                case Side.rigth:
+                    {
+                        // smth
+                        break;
+                    }
+
+                case Side.up:
+                    {
+                        // smth
+                        break;
+                    }
+
+                case Side.down:
+                    {
+                        // smth
+                        break;
+                    }
             }
         }
     }

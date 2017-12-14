@@ -49,5 +49,10 @@
         {
             return Math.Pow(x, 2) + Math.Pow(y, 2) == Math.Pow(Radius, 2);
         }
+
+        public override string Info()
+        {
+            return string.Format("{0}: centre = ({1}, {2}), radius = {3}", this.ReturnType(), CentreX, CentreY, Radius);
+        }
     }
 }
