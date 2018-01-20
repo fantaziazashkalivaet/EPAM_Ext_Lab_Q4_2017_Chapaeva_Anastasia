@@ -19,8 +19,8 @@
             Rings = new List<Ring>();
         }
 
-        public List<Line> Lines
-        {
+        public List<Line> Lines //todo pn здесь и ниже бессмысленное использование полей. можно было сокращенную форму записи свойства использовать.
+		{
             get
             {
                 return lines;

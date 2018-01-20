@@ -8,8 +8,8 @@
 
         public Ring() : base()
         {
-            OuterRadius = 2;
-        }
+            OuterRadius = 2;//todo pn хардкод
+		}
 
         public Ring(double centreX, double centreY, double innerRadius, double outerRadius)
         {
@@ -34,8 +34,8 @@
                 }
                 else
                 {
-                    outerRadius = Radius + 1;
-                }
+                    outerRadius = Radius + 1;//todo pn хардкод
+				}
             }
         }
 

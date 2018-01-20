@@ -12,10 +12,10 @@
 
         public Round()
         {
-            centreX = 1;
-            centreY = 1;
-            radius = 1;
-            CalculateCircumference();
+            centreX = 1; //todo pn hardcode
+            centreY = 1; //todo pn hardcode
+			radius = 1; //todo pn hardcode
+			CalculateCircumference();
             CalculateArea();
         }
 
@@ -29,10 +29,10 @@
             }
             else
             {
-                this.centreX = 1;
-                this.centreY = 1;
-                this.radius = 1;
-            }
+                this.centreX = 1;//todo pn hardcode
+				this.centreY = 1;//todo pn hardcode
+				this.radius = 1;//todo pn hardcode
+			}
 
             CalculateCircumference();
             CalculateArea();
@@ -63,8 +63,8 @@
 
             set
             {
-                radius = value;
-                CalculateCircumference();
+                radius = value;//todo pn а если отрицательный передадут?
+				CalculateCircumference();
                 CalculateArea();
             }
         }

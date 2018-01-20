@@ -12,10 +12,10 @@
 
         public Triangle()
         {
-            a = 1;
-            b = 1;
-            c = 1;
-            CalculatePerimetr();
+            a = 1;//todo pn хардкод
+            b = 1;//todo pn хардкод
+			c = 1;//todo pn хардкод
+			CalculatePerimetr();
             CalculateArea();
         }
 

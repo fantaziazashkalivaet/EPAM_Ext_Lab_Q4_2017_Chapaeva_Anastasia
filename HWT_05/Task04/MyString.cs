@@ -10,8 +10,8 @@
 
         public MyString()
         {
-            myString = new char[256];
-        }
+            myString = new char[256];//todo pn хардкод
+		}
 
         public MyString(int size)
         {

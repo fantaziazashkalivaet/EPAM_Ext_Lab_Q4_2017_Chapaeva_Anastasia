@@ -4,7 +4,7 @@
 
     public class User
     {
-        private const int MinYearOfBirth = 1900;
+        private const int MinYearOfBirth = 1900;//todo pn вот год в константы вынесла, а остальные значения по умолчанию нет.
         private string firstName;
         private string secondName;
         private string patronymic;
@@ -13,12 +13,12 @@
 
         public User()
         {
-            firstName = "Petr";
-            secondName = "Ivanov";
-            patronymic = "Vladimirovich";
-            dateOfBirth = new DateTime(MinYearOfBirth, 01, 01);
-            age = DateTime.Now.Year - dateOfBirth.Year;
-        }
+            firstName = "Petr";//todo pn хардкод
+			secondName = "Ivanov";//todo pn хардкод
+			patronymic = "Vladimirovich";//todo pn хардкод
+			dateOfBirth = new DateTime(MinYearOfBirth, 01, 01);//todo pn хардкод
+            age = DateTime.Now.Year - dateOfBirth.Year;//todo pn дублирование кода
+		}
 
         public User(string firstName, string secondName, string patronimic, DateTime dateOfBirth)
         {
@@ -26,8 +26,8 @@
             SecondName = secondName;
             Patronymic = patronimic;
             DateOfBirth = dateOfBirth;
-            age = DateTime.Now.Year - dateOfBirth.Year;
-        }
+            age = DateTime.Now.Year - dateOfBirth.Year;//todo pn некорректная логика вычисления возраста
+		}
 
         public string FirstName
         {
@@ -46,8 +46,8 @@
                 {
                     if (firstName == string.Empty)
                     {
-                        firstName = "Petr";
-                    }
+                        firstName = "Petr";//todo pn хардкод
+					}
                 }
             }
         }
@@ -69,8 +69,8 @@
                 {
                     if (secondName == string.Empty)
                     {
-                        secondName = "Ivanov";
-                    }
+                        secondName = "Ivanov";//todo pn хардкод
+					}
                 }
             }
         }
@@ -92,8 +92,8 @@
                 {
                     if (patronymic == string.Empty)
                     {
-                        patronymic = "Vladimirovich";
-                    }
+                        patronymic = "Vladimirovich";//todo pn хардкод
+					}
                 }
             }
         }
@@ -113,8 +113,8 @@
                 }
                 else
                 {
-                    if (dateOfBirth == null)
-                    {
+                    if (dateOfBirth == null) //todo pn атата проверяешь значимый тип на null)
+					{
                         dateOfBirth = new DateTime(MinYearOfBirth, 01, 01);
                     }
                 }

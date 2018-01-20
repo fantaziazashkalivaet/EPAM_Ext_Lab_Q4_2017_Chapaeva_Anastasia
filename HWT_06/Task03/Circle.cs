@@ -8,10 +8,10 @@
 
         public Circle()
         {
-            this.CentreX = 0;
-            this.CentreY = 0;
-            radius = 1;
-        }
+            this.CentreX = 0;//todo pn hardcode
+			this.CentreY = 0;//todo pn hardcode
+			radius = 1;//todo pn hardcode
+		}
 
         public Circle(double centreX, double centreY, double radius)
         {
@@ -35,8 +35,8 @@
                 }
                 else
                 {
-                    radius = 1;
-                }
+                    radius = 1;//todo pn hardcode
+				}
             }
         }
 
@@ -50,8 +50,8 @@
             return Math.Pow(x, 2) + Math.Pow(y, 2) == Math.Pow(Radius, 2);
         }
 
-        public override string Info()
-        {
+        public override string Info()//todo pn лучше ToString переопределить
+		{
             return string.Format("{0}: centre = ({1}, {2}), radius = {3}", this.ReturnType(), CentreX, CentreY, Radius);
         }
     }

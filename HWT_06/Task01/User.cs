@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class User
+    public class User //todo pn исправить в соотв. с замечаниями пред. задания
     {
         private const int MinYearOfBirth = 1900;
         private string firstName;

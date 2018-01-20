@@ -31,7 +31,7 @@
             }
         }
 
-        public int WorkExperience
+        public int WorkExperience // todo pn логичнее хранить дату начала работы и вычислять стаж из неё
         {
             get
             {
@@ -40,7 +40,7 @@
 
             set
             {
-                if (value >= 0 && value < 100)
+                if (value >= 0 && value < 100)//todo pn hardcode
                 {
                     workExperience = value;
                 }

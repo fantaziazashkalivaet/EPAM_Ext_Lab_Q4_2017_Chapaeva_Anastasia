@@ -2,8 +2,8 @@
 {
     using System;
 
-    public class Round
-    {
+    public class Round //todo pn взять из пред. домашки
+	{
         private double centreX;
         private double centreY;
         private double radius;
