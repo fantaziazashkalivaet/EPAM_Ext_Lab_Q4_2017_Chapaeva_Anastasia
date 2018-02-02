@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Task02
+﻿namespace Task02
 {
     public static class ExtendedString
     {
@@ -20,7 +14,7 @@ namespace Task02
                 return false;
             }
 
-            foreach(var e in str)
+            foreach (var e in str)
             {
                 if (!char.IsDigit(e))
                 {

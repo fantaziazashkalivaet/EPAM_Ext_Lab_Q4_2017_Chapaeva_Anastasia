@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Task03
+﻿namespace Task03
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     public static class FindPositive
     {
         public delegate bool Compare(int num);
@@ -38,7 +35,7 @@ namespace Task03
             }
 
             var countList = new List<int>();
-            foreach(var e in arr)
+            foreach (var e in arr)
             {
                 if (comp(e))
                 {

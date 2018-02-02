@@ -1,28 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// Написать методы поиска элементов в массиве
 
 namespace Task03
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var list = new List<int>();
-            for(var i = -3; i < 4; i++)
+            const int StandardListSize = 500000;
+            const int MinValueForRandom = -100;
+            const int MaxValueForRandom = 100;
+
+            var cki = new ConsoleKeyInfo();
+            do
             {
-                list.Add(i);
+                var rnd = new Random();
+                var list = new List<int>();
+                for (var i = 0; i < StandardListSize; i++)
+                {
+                    list.Add(rnd.Next(MinValueForRandom, MaxValueForRandom));
+                }
+
+                var check = new CheckTimeForFindPositive(list);
+                check.Run();
+                Console.WriteLine("\nPress any key to continue or ESC to exit");
+                cki = Console.ReadKey();
             }
-
-            FindPositive.Compare del = FindPositive.IsPositive;
-
-            var a = FindPositive.FindPositiveSimple(list);
-            var b = FindPositive.FindPositiveDelegate(list, del);
-            var c = FindPositive.FindPositiveAnonDelegate(list);
-            var d = FindPositive.FindPositiveLambdaDelegate(list);
-            var e = FindPositive.FindPositiveLinqDelegate(list);
+            while (cki.Key != ConsoleKey.Escape);
         }
     }
 }
