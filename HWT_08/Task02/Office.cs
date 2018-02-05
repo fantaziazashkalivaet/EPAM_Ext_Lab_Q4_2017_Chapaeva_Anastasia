@@ -23,7 +23,7 @@
         public void WorkerCome(Person newPerson, DateTime time)
         {
             ForConsole.Write(string.Empty);
-            ForConsole.Write(String.Format("[На работу пришел {0}]", newPerson.Name));
+            ForConsole.Write(String.Format("[На работу пришел {0}]", newPerson.Name));//todo pn почему здесь в константы не вынесла?
             foreach (var worker in workers)
             {
                 newPerson.Come += worker.Greeting;
@@ -42,8 +42,8 @@
         public void WorkerOut(Person outPerson)
         {
             ForConsole.Write(string.Empty);
-            ForConsole.Write(String.Format("[{0} ушел домой]", outPerson.Name));
-            outPerson.OutOffice();
+            ForConsole.Write(String.Format("[{0} ушел домой]", outPerson.Name));//todo pn почему здесь в константы не вынесла?
+			outPerson.OutOffice();
             foreach (var worker in workers)
             {
                 outPerson.Come -= worker.Greeting;

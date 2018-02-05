@@ -90,8 +90,8 @@
         /// <param name="s">Фраза</param>
         public void Say(string s)
         {
-            ForConsole.Write(String.Format("\"{0}\", - сказал {1}", s, Name));
-        }
+            ForConsole.Write(String.Format("\"{0}\", - сказал {1}", s, Name));//todo pn почему здесь в константы не вынесла?
+		}
 
         /// <summary>
         /// Прощается с ушедшим
@@ -99,7 +99,7 @@
         /// <param name="worker">Ушедший сотрудник</param>
         public void Goodbye(Person worker)
         {
-            Say(String.Format("{0}, {1}!", StandartGoodbye, worker.Name));
-        }
+            Say(String.Format("{0}, {1}!", StandartGoodbye, worker.Name));//todo pn почему здесь в константы не вынесла?
+		}
     }
 }
