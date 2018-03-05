@@ -136,7 +136,7 @@ WHERE ProductName LIKE '%cho_olade%';
 из указанной в колонке UnitPrice цены. 
 –езультатом запроса должна быть одна запись с одной колонкой с названием колонки 'Totals'.
 */
-SELECT CONVERT(money, ROUND(SUM(Quantity*UnitPrice*(1 - (Discount / 100))), 2), 1) [5.1]
+SELECT CONVERT(money, ROUND(SUM(Quantity*UnitPrice*(1 - (Discount / 100))), 2), 1) [5.1] -- у мен€ друга€ цифра получаетс€
 FROM [Order Details];
 /*
 ¬ случае, если Discount всЄ-таки не в процентах:
@@ -187,7 +187,7 @@ From Orders;
 с названием колонки СSellerТ и колонку c количеством заказов высвечивать с названием 'Amount'. 
 –езультаты запроса должны быть упор€дочены по убыванию количества заказов.
 */
-SELECT 
+SELECT --сделай, использу€ один select
 	(SELECT CONCAT(FirstName, ' ', LastName)
 	FROM Employees 
 	WHERE Employees.EmployeeID = Orders.EmployeeID) [Seller],
