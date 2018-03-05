@@ -136,13 +136,14 @@ WHERE ProductName LIKE '%cho_olade%';
 из указанной в колонке UnitPrice цены. 
 Результатом запроса должна быть одна запись с одной колонкой с названием колонки 'Totals'.
 */
-SELECT CONVERT(money, ROUND(SUM(Quantity*UnitPrice*(1 - (Discount / 100))), 2), 1) [5.1] -- у меня другая цифра получается
-FROM [Order Details];
 /*
-В случае, если Discount всё-таки не в процентах:
+SELECT CONVERT(money, ROUND(SUM(Quantity*UnitPrice*(1 - (Discount / 100))), 2), 1) [5.1] -- у меня другая цифра получается
+FROM [Order Details];*/
+
+--В случае, если Discount всё-таки не в процентах:
 SELECT CONVERT(money, ROUND(SUM(Quantity*UnitPrice*(1 - Discount)), 2), 1) [5.1]
 FROM [Order Details]; 
-*/
+
 
 
 /*
@@ -195,6 +196,14 @@ SELECT --сделай, используя один select
 FROM Orders
 GROUP BY EmployeeID
 ORDER BY [Amount] DESC;
+
+--с одним select:
+SELECT CONCAT(E.FirstName, ' ', E.LastName), COUNT(*) [Amount]
+FROM Employees as E JOIN Orders as O ON
+E.EmployeeID = O.EmployeeID
+GROUP BY O.EmployeeID, E.FirstName, E.LastName
+ORDER BY [Amount] DESC;
+
 
 /*
 6.3 По таблице Orders найти количество заказов, cделанных каждым продавцом и для каждого покупателя. 
