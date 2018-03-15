@@ -1,0 +1,27 @@
+﻿body {
+    font-family:  Tahoma, Georgia, Verdana, arial,  Geneva, sans-serif;
+	font-size: 11pt;
+}
+
+.content-menu{
+  background: #fae498;
+  width: 20%;
+  border-radius: 20px;
+  border: 1px solid;
+  box-shadow: 5px 5px #860500;
+}
+
+.content-menu{
+  list-style: none;
+  margin: 0;
+  padding: 1% 1%;
+  line-height: 1.5;
+  
+}
+
+.menu-link{
+  text-decoration: none;
+  color: #940b05;
+  margin: 0px;
+
+}

@@ -1,0 +1,146 @@
+﻿* {
+    margin: 0;  
+}
+
+body {
+    font-family:  Tahoma, Georgia, Verdana, arial,  Geneva, sans-serif;
+    font-size: 11pt;
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.header {
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.content {
+    display: table;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    color: #002c78;
+}
+
+.menu {
+    width: 20%;
+    display: table-cell;
+    vertical-align: top;
+    padding: 1%;
+}
+
+.content-menu {
+    list-style: none;
+    padding: 0;
+    color: #0e78c3;
+}
+
+
+.authorization {
+    width: 20%; 
+    display: table-cell;
+    vertical-align: top;   
+    padding: 1%;
+}
+
+.input-form {
+    height: 25px;
+	padding: 0;
+    margin: 2% 0;
+	width: 100%;
+	border: 1px solid #ABADB3;
+}
+
+.status {
+    height: 25px;
+	padding: 1%;
+    margin: 6% 0;
+	width: 101%;
+	border: 1px solid #ABADB3;
+}
+
+.button {
+    width: 100%;
+    height: 25px;
+    margin: 6% 0;
+    border-radius: 6px;
+    border: 1px solid black;
+    background: rgba(128, 128, 128, 0.3);
+}
+
+
+.main-header {
+    text-align: center;
+}
+
+.main {
+    width: 60%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: top;
+    text-align: justify;
+    padding: 1%;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.float-img {
+    float: right;
+    max-width: 25%;
+    margin: 1%;
+}
+
+.list {
+    margin: 1%;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.product-table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12pt;
+}
+
+.product-table th {
+    border: 1px solid black;
+}
+
+.product-table td {
+    border: 1px solid black;
+}
+
+td, th{
+    padding: 5px;
+}
+
+.number-in-table {
+    text-align: center;
+}
+
+.name-in-table {
+    text-align: left;
+}
+
+.price-in-table {
+    text-align: center;
+}
+
+
+.footer {
+    border-top: 1px solid black;
+    padding: 1%;
+}
+
+sup {
+    font-size: 8pt;
+}

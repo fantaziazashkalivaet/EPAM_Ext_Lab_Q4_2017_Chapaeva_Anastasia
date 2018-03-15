@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css_task3.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Макет задания по "Основы HTML"</h1>
+    </header>
+    <div class="content">
+            <nav class="menu">
+                <h2>Меню</h2>
+                <ul class="content-menu">
+                    <li>
+                        <a href="">Главная</a>
+                    </li>
+                    <li>
+                        <a href="">Продукты</a>
+                    </li>
+                    <li>
+                        <a href="">Кафе</a>
+                    </li>
+                    <li>
+                        <a href="">Рестораны</a>
+                    </li>
+                    <li>
+                        <a href="">Вопросы</a>
+                    </li>
+                    <li>
+                        <a href="">Акции</a>
+                    </li>
+                </ul>
+            </nav>
+        <section class="main">
+            <h2 class="main-header">Основной контент</h2>
+            <p>
+                <img src="image.jpg" class="float-img" />
+                Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться.
+                Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение
+                шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается
+                при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие
+                программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по
+                умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много
+                веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum
+                получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например,
+                юмористические варианты).<sup>1</sup>
+            </p>
+            <p>
+                <ul class="list">
+                    <li class="italic">Курсивный пункт<sup>2</sup></li>
+                    <li class="bold">Жирный пункт</li>
+                </ul>
+            </p>
+
+            <h3>Список товаров в магазине</h3>
+            <table class="product-table">
+                <tr>
+                    <th class="number-in-table">Номер</th>
+                    <th class="name-in-table">Название</th>
+                    <th class="price-in-table">Цена</th>
+                </tr>
+                <tr>
+                    <td class="number-in-table">1</td>
+                    <td class="name-in-table">Меч</td>
+                    <td class="price-in-table">10</td>
+                </tr>
+                <tr>
+                    <td class="number-in-table">2</td>
+                    <td class="name-in-table">Булава</td>
+                    <td class="price-in-table">5</td>
+                </tr>
+                <tr>
+                    <td class="number-in-table">3</td>
+                    <td class="name-in-table">Верный конь</td>
+                    <td class="price-in-table">15</td>
+                </tr>
+            </table>
+        </section>
+        <aside class="authorization">
+            <form action="index_task3.html" method='post'>
+                <label for="form_login">Логин:</label>
+                <input type="text" class="input-form" id="form_login" name="Login">
+
+                <label for="form_password">Пароль:</label>
+                <input type="text" class="input-form" id="form_password" name="Password">
+
+                <select class="status">
+                    <option>Admin</option>
+                    <option>Tester</option>
+                    <option>User</option>
+                </select>
+
+                <input type="checkbox" id="form_remember" name="Remember" />
+                <label for="form_remember">Запомни меня</label>
+
+                <input type="submit" value="Вход" class="button"/>
+            </form>
+        </aside>
+    </div>
+    <footer class="footer">&copy; 2018 Основы HTML</footer>
+</body>
+</html>
