@@ -196,7 +196,7 @@
                 command.Parameters.AddWithValue("@requiredDate", newOrder.RequiredDate);
                 command.Parameters.AddWithValue(
                     "@shippedDate", 
-                    newOrder.ShippedDate == null ? DBNull.Value : (object)newOrder.ShippedDate); // вот как это сделать так, чтобы нормально?
+                    newOrder.ShippedDate == null ? DBNull.Value : (object)newOrder.ShippedDate); // вот как это сделать так, чтобы нормально? //pn так обычно и делают
                 command.Parameters.AddWithValue("@freight", newOrder.Freight);
                 command.Parameters.AddWithValue("@shipAddress", newOrder.ShipAddress);
                 command.Parameters.AddWithValue("@shipCity", newOrder.ShipCity);
@@ -215,7 +215,7 @@
 
                 connection.Open();
 
-                command.ExecuteNonQuery();
+                command.ExecuteNonQuery();//todo pn в этом месте падает (см в скайп). Лучше перехватывать все SQLException в методах DAL и показывать ошибку пользователю в скорректированном виде. ("что-то пошло не так. см в лог для деталей").
 
                 id = int.Parse(pID.Value.ToString());
             }
@@ -328,7 +328,7 @@
                     }
                 }
             }
-            //// тут должна быть сортировка, но её нет
+            //// тут должна быть сортировка, но её нет //todo pn почему должна и почему нет?
 
             return ids;
         }

@@ -8,11 +8,11 @@
     using DAL.Model;
     using Models;   
 
-    public class HomeController : Controller
+    public class HomeController : Controller //todo pn атата homecontroller, блин
     {
         public ActionResult Index()
         {
-            var orderManager = new OrderManagment();
+            var orderManager = new OrderManagment();//todo pn здесь бы, конечно, инъекцию зависимотей через IoC контроллер
 
             var orders =
                 Mapper.Map<List<SummaryOfOrder>, List<SummaryOfOrderViewModel>>(orderManager.GetSummaryOfOrders());
@@ -22,7 +22,7 @@
 
         public ActionResult GetDetails(int id)
         {
-            var orderManager = new OrderManagment();
+            var orderManager = new OrderManagment();//todo pn у тебя дублируется инициализация твоего слоя DAL. Зачем? пусть будет статическим полем контроллера. Один раз проинициализируешь и тебе хватит.
 
             var order = 
                 Mapper.Map<FullOrderInformation, OrderDetailsViewModel>(orderManager.GetOrderInformation(id));
@@ -63,7 +63,7 @@
         {            
             var orderManager = new OrderManagment();
 
-            ViewBag.ID = orderID; // когда-нибудь избавлюсь от вьюбага, честно-честно
+            ViewBag.ID = orderID; // когда-нибудь избавлюсь от вьюбага, честно-честно //todo pn ты всё это могла в соответствующей ViewModel задать и не использовать эту сумку вообще.
             ViewBag.ProductID = orderManager.GetProductsID();
 
             return View();
@@ -80,7 +80,7 @@
 
         public ActionResult About()
         {
-            ViewBag.Message = "Пусть будет.";
+            ViewBag.Message = "Пусть будет.";//todo pn пусть, только в ресурсы строки вынеси)
 
             return View();
         }
