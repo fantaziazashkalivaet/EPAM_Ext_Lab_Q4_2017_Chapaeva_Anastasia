@@ -1,0 +1,41 @@
+﻿@model List<HWT_14.Models.SummaryOfOrderViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Orders</h2>
+
+<p>
+    @Html.ActionLink("Create New Order", "CreateOrder")
+</p>
+<table class="table">
+    <tr>
+        <th>OrderID</th>
+        <th>CustomerID</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.ActionLink("Show details", "GetDetails", new { id = item.OrderID })
+            </td>
+        </tr>
+    }
+</table>

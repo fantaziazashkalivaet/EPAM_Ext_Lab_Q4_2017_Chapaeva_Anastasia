@@ -1,0 +1,65 @@
+﻿@model HWT_14.Models.OrderDetailsViewModel
+
+@{
+    ViewBag.Title = "GetDetails";
+}
+
+<h2>Order details</h2>
+
+@Html.DisplayForModel()
+<table class="table">
+    <tr>
+        <th>OrderID</th>
+        <th>OrderDate</th>
+        <th>RequiredDate</th>
+        <th>ShippedDate</th>
+        <th>ShipVia</th>
+        <th>Freight</th>
+        <th>ShipName</th>
+        <th>ShipAddress</th>
+        <th>ShipCity</th>
+        <th>ShipRegion</th>
+        <th>ShipPostalCode</th>
+        <th>ShipCountry</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>@Model.Order.OrderID</td>
+        <td>@Model.Order.OrderDate</td>
+        <td>@Model.Order.RequiredDate</td>
+        <td>@Model.Order.ShippedDate</td>
+        <td>@Model.Order.ShipVia</td>
+        <td>@Model.Order.Freight</td>
+        <td>@Model.Order.ShipName</td>
+        <td>@Model.Order.ShipAddress</td>
+        <td>@Model.Order.ShipCity</td>
+        <td>@Model.Order.ShipRegion</td>
+        <td>@Model.Order.ShipPostalCode</td>
+        <td>@Model.Order.ShipCountry</td>
+        <td>@Model.Order.Status</td>
+    </tr>
+</table>
+
+
+    <table class="table">
+        <tr>
+            <th>ProductName</th>
+            <th>UnitPrice</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+        </tr>
+    
+        @foreach (var product in Model.OrderDetails)
+        {
+        <tr>
+            <td>@product.ProductName</td>
+            <td>@product.UnitPrice</td>
+            <td>@product.Quantity</td>
+            <td>@product.Discount</td>
+        </tr>
+        }    
+    </table>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
