@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "MyDocuments";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<!--кнопка "Загрузить документ"-->
+@Html.ActionLink("Загрузить", "Create", "Home", new { @class = "btn btn-primary btn-lg" })
+<!--кнопка "доступные документы"??-->
+@Html.ActionLink("Доступные документы", "имядействия", "контроллер", new { @class = "btn btn-primary btn-lg" })
+
+
+<!--форма поиска??-->
+@using (Html.BeginForm("действие", "контроллер", FormMethod.Post))
+{
+    <div class="well form-search">
+        <span>
+            <input type="search" class="input-medium search-query form-control" placeholder="Поиск по документам">
+        </span>
+        <span>
+            <button type="submit" class="btn">Поиск</button>
+        </span>
+    </div>
+}
+
+<!--список документов-->
+<table class="table">
+    <tr>
+        <th>Название</th>
+        <th>Автор</th>
+        <th>Дата загрузки</th>
+        <th>Доступ</th>
+        <th>Действия</th>
+    </tr>
+    @foreach (var doc in ViewBag.Docs /*список документов из модели*/)
+    {
+        <tr>
+            <td>@doc.Title</td>
+            <td>@doc.UserName</td>
+            <td>@doc.Date</td>
+            <td>@doc.AccessID</td>
+            <td>
+                <a href="GetFile/@doc.DocumentID">Загрузить</a>
+                <a href="RemoveFile/@doc.DocumentID">Удалить</a>
+            @Html.ActionLink("Скачать", "имядействия", "контроллер", new { @class = "btn btn-primary btn-lg" })
+            @Html.ActionLink("Изменить доступ", "имядействия", "контроллер", new { @class = "btn btn-primary btn-lg" })
+            @Html.ActionLink("Удалить", "имядействия", "контроллер", new { @class = "btn btn-primary btn-lg" })</td>
+        </tr>
+    }
+</table>
+
+
+<p>Use this area to provide additional information.</p>
