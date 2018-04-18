@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FileStorage.DAL.Interfaces
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
         bool CheckUser(User user);
 

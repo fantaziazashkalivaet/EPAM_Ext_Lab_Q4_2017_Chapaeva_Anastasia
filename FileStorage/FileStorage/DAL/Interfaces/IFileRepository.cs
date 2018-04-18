@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FileStorage.DAL.Interfaces
 {
-    interface IFileRepository
+    public interface IFileRepository
     {
         IEnumerable<Document> GetDocuments();
 

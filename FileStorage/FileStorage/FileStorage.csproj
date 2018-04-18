@@ -164,7 +164,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AvailableDocumentsController.cs" />
+    <Compile Include="Controllers\BaseDocumentsController.cs" />
+    <Compile Include="Controllers\StorageController.cs" />
+    <Compile Include="Controllers\UserDocumentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Helpers\PagingHelpers.cs" />
+    <Compile Include="Models\PageInfo.cs" />
+    <Compile Include="Providers\CustomRoleProvider.cs" />
     <Compile Include="DAL\FileRepository.cs" />
     <Compile Include="DAL\Interfaces\IFileRepository.cs" />
     <Compile Include="DAL\Interfaces\IUserRepository.cs" />
@@ -177,6 +185,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -225,8 +234,11 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Infrastructure\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\AvailableDocuments\" />
+    <Folder Include="Views\BaseDocuments\" />
+    <Folder Include="Views\Document\" />
+    <Folder Include="Views\Storage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

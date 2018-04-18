@@ -6,11 +6,12 @@ using System.Web.Mvc;
 
 namespace FileStorage.Controllers
 {
-    public class HomeController : Controller
+    public class BaseDocumentsController : Controller
     {
+        // GET: BaseDocuments
         public ActionResult Index()
         {
             return View();
-        } 
+        }
     }
 }
