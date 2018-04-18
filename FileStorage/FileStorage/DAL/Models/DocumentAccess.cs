@@ -5,7 +5,10 @@ using System.Web;
 
 namespace FileStorage.DAL.Models
 {
-    public class DocumentAccess
+    public enum DocumentAccess
     {
+        Full,
+        Partial,
+        Private
     }
 }

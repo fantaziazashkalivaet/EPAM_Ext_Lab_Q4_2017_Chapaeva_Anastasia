@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileStorage.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,14 @@ namespace FileStorage.DAL.Interfaces
 {
     interface IUserRepository
     {
+        bool CheckUser(User user);
+
+        int CreateUser(User user);
+
+        string GetHashString(string s);
+
+        User SearchUserByID(int id);
+
+        User SearchUserByLogin(string login);
     }
 }
