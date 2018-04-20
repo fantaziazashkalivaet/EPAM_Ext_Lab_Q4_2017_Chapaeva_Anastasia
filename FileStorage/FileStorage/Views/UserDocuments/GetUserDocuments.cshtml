@@ -1,0 +1,92 @@
+﻿@using FileStorage.Helpers
+@using FileStorage.DAL.Models
+@model FileStorage.Models.DocumentsViewModel
+@{
+    ViewBag.Title = "MyDocuments";
+}
+
+<br />
+<h2>Мои документы</h2>
+<div>
+    @Html.ActionLink("Загрузить", "Create", "UserDocuments", "", new { @class = "btn btn-primary btn-lg compItem" })
+    <br />
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    <div class="well form-search form-inline">
+        <div>
+            <span>
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "search-query form-control span2" } })
+             </span>
+            <span>
+                <button type="submit" class="btn">Поиск</button>
+            </span>
+        </div>
+        <div>
+            @Html.ListBoxFor(m => m.Filter, new SelectList(Model.Tags.Select(t => t.TagName).ToArray()), new { @class = "form-control" })
+        <div class="text-info">Для выбора нескольких форматов зажмите Ctrl</div>
+        </div>
+    </div>
+}
+
+<div class="well">
+    <table class="table">
+        <tr>
+            <th class="text-center">Название</th>
+            <th class="text-center">Дата загрузки</th>
+            <th class="text-center">Доступ</th>
+            <th class="text-center">Формат</th>
+            <th class="text-center">Действия</th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var doc in Model.Documents)
+            {
+                <tr>
+                    <td class="text-center">@doc.Title</td>
+                    <td class="text-center">@doc.Date</td>
+                    <td class="text-center">@doc.AccessID</td>
+                    <td class="text-center">@doc.Tag.TagName</td>
+                    <td class="text-center">
+                        @Html.ActionLink("Скачать ", "GetFile", new { hash = doc.Hash }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Изменить доступ ", "ChangeDocAccess",
+                            new { docId = doc.DocumentID, oldIdAccess = doc.AccessID }, new { @class = "btn btn-default compItem" })
+                        @if (doc.AccessID == DocumentAccess.Partial)
+                    {
+                            @Html.ActionLink(" Пользователи с доступом ", "ChangeUserAccess",
+                            new { docId = doc.DocumentID }, new { @class = "btn btn-default compItem" })
+                        }
+                        @Html.ActionLink(" Удалить ", "RemoveFile",
+                        new { id = doc.DocumentID, title = doc.Title }, new { @class = "btn btn-default compItem" })
+                    </td>
+                </tr>
+            }
+        }
+    </table>    
+</div>
+<div class="btn-group-sm pull-right">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("GetPublicDocuments", new { page = x }))
+</div>
+
+    <div id="modDialog" class="modal fade">
+        <div id="dialogContent" class="modal-dialog"></div>
+    </div>
+
+    @section scripts
+{
+        <script type="text/javascript">
+
+            $(function () {
+                $.ajaxSetup({ cache: false });
+                $(".compItem").click(function (e) {
+
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#dialogContent').html(data);
+                        $('#modDialog').modal('show');
+                    });
+                });
+            })
+        </script>
+    }

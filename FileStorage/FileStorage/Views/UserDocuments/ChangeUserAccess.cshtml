@@ -1,0 +1,28 @@
+﻿@model FileStorage.Models.UsersAccessControlViewModel
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Открыть/закрыть доступ для пользователя</h4>
+    </div>
+    <div class="modal-body">      
+@using (Html.BeginForm("ChangeUserAccess", "UserDocuments"))
+{
+        <table class="table text-center">
+            <tr>
+                <th>Пользователи, имеющие доступ к документу:</th>
+            </tr>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.Login</td>
+                </tr>
+            }
+        </table>
+        @Html.EditorFor(model => model.ChangeAccessToUser, new { htmlAttributes = new { @class = "form-control input-medium" } })
+        @Html.RadioButtonFor(m => m.DocumentID, Model.DocumentID, new { @class = "hidden" })
+    <span class="text-info">Введите имя пользователя, чтобы для него сменился доступ.</span>
+    <button type="submit" class="btn">Сменить доступ</button>
+}
+    </div>
+</div>

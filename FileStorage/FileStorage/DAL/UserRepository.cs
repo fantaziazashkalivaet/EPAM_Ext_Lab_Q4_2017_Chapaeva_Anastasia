@@ -1,23 +1,20 @@
-﻿using FileStorage.DAL.Interfaces;
-using FileStorage.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.Common;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Web;
-
-namespace FileStorage.DAL
+﻿namespace FileStorage.DAL
 {
+    using System;
+    using System.Configuration;
+    using System.Data;
+    using System.Data.Common;
+    using System.Data.SqlClient;
+    using System.Security.Cryptography;
+    using System.Text;
+    using Interfaces;
+    using Models;
+
     public class UserRepository : IUserRepository
     {
+        private const int UserNotExist = 0;
         private DbProviderFactory factory;
         private string connectionString;
-        private const int userNotExist = 0;
 
         public UserRepository()
         {
@@ -27,9 +24,9 @@ namespace FileStorage.DAL
             this.factory = DbProviderFactories.GetFactory(providerName);
         }
 
-        public bool CheckUser(User user)
+        public bool CheckLogin(string login, string passwordHash)
         {
-            if (user == null)
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(passwordHash))
             {
                 return false;
             }
@@ -41,17 +38,52 @@ namespace FileStorage.DAL
                 command.CommandText = "SELECT UserID, Login, PasswordHash, RoleID FROM Users " +
                                       "WHERE @Login = Login AND @PasswordHash = PasswordHash ";
                 command.CommandType = CommandType.Text;
-                command.Parameters.AddWithValue("@Login", user.Login);
-                command.Parameters.AddWithValue("@PasswordHash", user.PasswordHash);
+                command.Parameters.AddWithValue("@Login", login);
+                command.Parameters.AddWithValue("@PasswordHash", passwordHash);
 
-                // добавить проверку
-                connection.Open();
-
-                var reader = command.ExecuteReader();
-                if (reader.Read())
+                try
                 {
-                    return true;
+                    connection.Open();
+
+                    var reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        return true;
+                    }
                 }
+                catch (SqlException)
+                {
+                    throw new Exception("Что-то пошло не так x.x");
+                }
+            }
+
+            return false;
+        }
+
+        public bool CheckUser(string login)
+        {
+            if (login == null)
+            {
+                return false;
+            }
+
+            using (var connection = this.factory.CreateConnection())
+            {
+                connection.ConnectionString = this.connectionString;
+                var command = (SqlCommand)connection.CreateCommand();
+                command.CommandText = "SELECT UserID " +
+                                      " FROM [Users] " +
+                                      " WHERE LOWER(@Login) = LOWER(Login) ";
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("@Login", login);
+
+                    connection.Open();
+
+                    var reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        return true;
+                    }
             }
 
             return false;
@@ -59,10 +91,9 @@ namespace FileStorage.DAL
 
         public int CreateUser(User user)
         {
-            int userId = userNotExist;
+            int userId = UserNotExist;
 
-            // проверка на повторение имени пользователя
-            if (SearchUserByLogin(user.Login).UserID != userNotExist)
+            if (SearchUserByLogin(user.Login).UserID != UserNotExist)
             {
                 return userId;
             }
@@ -86,9 +117,8 @@ namespace FileStorage.DAL
                 uID.Direction = ParameterDirection.Output;
                 command.Parameters.Add(uID);
 
-                // добавить проверку
-                connection.Open();
-                command.ExecuteNonQuery();
+                    connection.Open();
+                    command.ExecuteNonQuery();
 
                 userId = int.Parse(uID.Value.ToString());
             }
@@ -103,7 +133,6 @@ namespace FileStorage.DAL
             using (var connection = factory.CreateConnection())
             {
                 connection.ConnectionString = connectionString;
-                connection.Open();
 
                 var command = (SqlCommand)connection.CreateCommand();
                 command.CommandText = "SELECT UserID, Login, PasswordHash, RoleID " +
@@ -112,17 +141,26 @@ namespace FileStorage.DAL
                 command.CommandType = CommandType.Text;
                 command.Parameters.AddWithValue("@ID", id);
 
-                using (var reader = command.ExecuteReader())
+                try
                 {
-                    if (reader.Read())
+                    using (var reader = command.ExecuteReader())
                     {
-                        user.UserID = (int)reader["UserID"];
-                        user.Login = reader["Login"] as string;
-                        user.PasswordHash = reader["PasswordHash"] as string;
-                        user.Role = new Role();
-                        user.Role.RoleID = (int)reader["RoleID"];
-                        user.Role.Name = reader["Name"] as string;
+                        connection.Open();
+
+                        if (reader.Read())
+                        {
+                            user.UserID = (int)reader["UserID"];
+                            user.Login = reader["Login"] as string;
+                            user.PasswordHash = reader["PasswordHash"] as string;
+                            user.Role = new Role();
+                            user.Role.RoleID = (int)reader["RoleID"];
+                            user.Role.Name = reader["Name"] as string;
+                        }
                     }
+                }
+                catch (SqlException)
+                {
+                    throw new Exception("Что-то пошло не так :c");
                 }
             }
 
@@ -136,8 +174,7 @@ namespace FileStorage.DAL
             using (var connection = factory.CreateConnection())
             {
                 connection.ConnectionString = connectionString;
-                connection.Open();
-
+                
                 var command = (SqlCommand)connection.CreateCommand();
                 command.CommandText = "SELECT UserID, Login, PasswordHash, U.RoleID, Name " +
                                       "FROM [Users] as U JOIN [Roles] as R ON U.RoleID = R.RoleID " +
@@ -145,18 +182,19 @@ namespace FileStorage.DAL
                 command.CommandType = CommandType.Text;
                 command.Parameters.AddWithValue("@Login", string.IsNullOrEmpty(login) ? DBNull.Value : (object)login);
 
+                connection.Open();
                 using (var reader = command.ExecuteReader())
-                {
-                    if (reader.Read())
                     {
-                        user.UserID = (int)reader["UserID"];
-                        user.Login = reader["Login"] as string;
-                        user.PasswordHash = reader["PasswordHash"] as string;
-                        user.Role = new Role();
-                        user.Role.RoleID = (int)reader["RoleID"];
-                        user.Role.Name = reader["Name"] as string;
-                    }
-                }
+                        if (reader.Read())
+                        {
+                            user.UserID = (int)reader["UserID"];
+                            user.Login = reader["Login"] as string;
+                            user.PasswordHash = reader["PasswordHash"] as string;
+                            user.Role = new Role();
+                            user.Role.RoleID = (int)reader["RoleID"];
+                            user.Role.Name = reader["Name"] as string;
+                        }
+                    }           
             }
 
             return user;

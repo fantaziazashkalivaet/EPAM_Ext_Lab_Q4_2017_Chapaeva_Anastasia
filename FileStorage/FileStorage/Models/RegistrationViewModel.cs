@@ -1,21 +1,23 @@
-﻿namespace FileStorage.DAL.Models
+﻿namespace FileStorage.Models
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class User
+    public class RegistrationViewModel
     {
-        public int UserID { get; set; }
-
-        public Role Role { get; set; }
-
         [Required]
-        [Display(Name = "Login:")]
+        [DataType(DataType.Password)]
         [StringLength(10, ErrorMessage = "Логин должен содержать от 4-х до 10-и символов", MinimumLength = 4)]
         public string Login { get; set; }
 
         [Required]
-        [Display(Name = "Password:")]
+        [DataType(DataType.Password)]
         [StringLength(20, ErrorMessage = "Пароль должен содержать от 4-х до 20-и символов", MinimumLength = 4)]
-        public string PasswordHash { get; set; }
+        public string Password { get; set; }
+
+        [Required]
+        [Display(Name = "Confirm password")]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Пароли не совпадают")]
+        public string ConfirmPassword { get; set; }
     }
 }

@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace FileStorage.Models
+﻿namespace FileStorage.Models
 {
+    using System;
+
     public class PageInfo
     {
-        public int PageNumber { get; set; } // номер текущей страницы
-        public int PageSize { get; set; } // кол-во объектов на странице
-        public int TotalItems { get; set; } // всего объектов
-        public int TotalPages  // всего страниц
+        public int PageNumber { get; set; } 
+
+        public int PageSize { get; set; } 
+
+        public int TotalItems { get; set; } 
+
+        public int TotalPages 
         {
             get { return (int)Math.Ceiling((decimal)TotalItems / PageSize); }
         }

@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -92,6 +96,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -161,17 +166,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AvailableDocumentsController.cs" />
-    <Compile Include="Controllers\BaseDocumentsController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="Controllers\UserDocumentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\AccessRepository.cs" />
+    <Compile Include="DAL\Interfaces\IAccessRepository.cs" />
+    <Compile Include="DAL\Interfaces\ITagRepository.cs" />
+    <Compile Include="DAL\TagRepository.cs" />
     <Compile Include="Helpers\PagingHelpers.cs" />
+    <Compile Include="Models\AccessViewModel.cs" />
+    <Compile Include="Models\DocumentsViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PageInfo.cs" />
+    <Compile Include="Models\RegistrationViewModel.cs" />
+    <Compile Include="Models\RemoveDocViewModel.cs" />
+    <Compile Include="Models\UserBasicInfo.cs" />
+    <Compile Include="Models\UsersAccessControlViewModel.cs" />
     <Compile Include="Providers\CustomRoleProvider.cs" />
     <Compile Include="DAL\FileRepository.cs" />
     <Compile Include="DAL\Interfaces\IFileRepository.cs" />
@@ -227,19 +244,26 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\ErrorDefault.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Storage\GetPublicDocuments.cshtml" />
+    <Content Include="Views\Storage\Details.cshtml" />
+    <Content Include="Views\AvailableDocuments\GetAvailableDocuments.cshtml" />
+    <Content Include="Views\AvailableDocuments\Details.cshtml" />
+    <Content Include="Views\UserDocuments\GetUserDocuments.cshtml" />
+    <Content Include="Views\UserDocuments\RemoveFile.cshtml" />
+    <Content Include="Views\UserDocuments\ChangeDocAccess.cshtml" />
+    <Content Include="Views\UserDocuments\ChangeUserAccess.cshtml" />
+    <Content Include="Views\Account\Registration.cshtml" />
+    <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\UserDocuments\Create.cshtml" />
+    <Content Include="Views\Admin\ChangeDocAccess.cshtml" />
+    <Content Include="Views\Admin\ChangeUserAccess.cshtml" />
+    <Content Include="Views\Admin\GetAllDocuments.cshtml" />
+    <Content Include="Views\Admin\RemoveFile.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\AvailableDocuments\" />
-    <Folder Include="Views\BaseDocuments\" />
-    <Folder Include="Views\Document\" />
-    <Folder Include="Views\Storage\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

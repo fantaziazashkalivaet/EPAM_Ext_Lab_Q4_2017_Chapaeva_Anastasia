@@ -6814,3 +6814,9 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.doc {
+    min-height: 140px;
+    margin: 50px, 20px;
+    padding: 30px, 15px;
+}

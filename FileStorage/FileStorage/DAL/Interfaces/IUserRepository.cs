@@ -1,15 +1,12 @@
-﻿using FileStorage.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FileStorage.DAL.Interfaces
+﻿namespace FileStorage.DAL.Interfaces
 {
+    using Models;
+
     public interface IUserRepository
     {
-        bool CheckUser(User user);
+        bool CheckLogin(string login, string passwordHash);
+
+        bool CheckUser(string login);
 
         int CreateUser(User user);
 

@@ -1,0 +1,21 @@
+﻿@model FileStorage.Models.AccessViewModel
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Сменить доступ к документу</h4>
+    </div>
+    <div class="modal-body text-center">
+        @using (Html.BeginForm("ChangeDocAccess", "UserDocuments"))
+        {
+        <dl class="dl-horizontal text-center">
+            <dd>
+                @Html.DropDownListFor( m => m.NewAccess, new SelectList(Model.ListAccess.ToArray()), new { @class = "form-control" })
+                @Html.RadioButtonFor(m=>m.DocumentID, Model.DocumentID, new { @class="hidden"})
+                @Html.RadioButtonFor(m => m.OldAccess, Model.OldAccess, new { @class = "hidden" })
+            </dd>
+
+        </dl>
+        <button type="submit" class="btn">Ок</button>
+        }
+    </div>
+</div>

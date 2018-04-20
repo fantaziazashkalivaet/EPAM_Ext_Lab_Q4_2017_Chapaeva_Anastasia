@@ -1,24 +1,20 @@
-﻿using FileStorage.DAL.Interfaces;
-using FileStorage.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-
-namespace FileStorage.Controllers
+﻿namespace FileStorage.Controllers
 {
+    using System.Web.Mvc;
+    using System.Web.Security;
+    using DAL.Interfaces;
+    using DAL.Models;
+    using Models;
+
+    [Authorize]
     public class AccountController : Controller
     {
-        private const int userNotExist = 0;
-        private const int defaultUserStatus = 1;
-        private IFileRepository fileRepository;
+        private const int UserNotExist = 0;
+        private const int DefaultUserStatus = 1;
         private IUserRepository userRepository;
 
-        public AccountController(IFileRepository fileRepositoryParam, IUserRepository userRepositoryParam)
+        public AccountController(IUserRepository userRepositoryParam)
         {
-            fileRepository = fileRepositoryParam;
             userRepository = userRepositoryParam;
         }
 
@@ -35,28 +31,28 @@ namespace FileStorage.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult LogIn(User user)
+        [ValidateAntiForgeryToken]
+        public ActionResult LogIn(LoginViewModel user)
         {
             if (!ModelState.IsValid)
             {
                 return View(user);
             }
 
-            user.PasswordHash = userRepository.GetHashString(user.PasswordHash);
-            if (userRepository.CheckUser(user))
+            user.Password = userRepository.GetHashString(user.Password);
+            if (userRepository.CheckUser(user.Login))
             {
                 FormsAuthentication.SetAuthCookie(user.Login, true);
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                ModelState.AddModelError("", "Пользователя с такими данными нет. Проверьте правильность и введите снова.");
+                ModelState.AddModelError(string.Empty, "Пользователя с такими данными нет. Проверьте правильность и введите снова.");
             }
 
             return View(user);
         }
 
-        [Authorize]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
@@ -71,12 +67,13 @@ namespace FileStorage.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Registration(User user)
+        public ActionResult Registration(RegistrationViewModel user)
         {
             if (user == null)
             {
@@ -85,20 +82,24 @@ namespace FileStorage.Controllers
 
             if (ModelState.IsValid)
             {
-                user.PasswordHash = userRepository.GetHashString(user.PasswordHash);
-                user.Role = new Role();
-                user.Role.RoleID = defaultUserStatus;
-                var userID = userRepository.CreateUser(user);
-
-                if (userID != userNotExist)
+                var newUser = new User()
                 {
-                    FormsAuthentication.SetAuthCookie(user.Login, true);
+                    Login = user.Login,
+                    PasswordHash = userRepository.GetHashString(user.Password),
+                    Role = new Role() { RoleID = DefaultUserStatus }
+                };
+
+                var userID = userRepository.CreateUser(newUser);
+
+                if (userID != UserNotExist)
+                {
+                    FormsAuthentication.SetAuthCookie(newUser.Login, true);
 
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Пользователь с таким логином уже существует");
+                    ModelState.AddModelError(string.Empty, "Пользователь с таким логином уже существует");
                 }
             }
 

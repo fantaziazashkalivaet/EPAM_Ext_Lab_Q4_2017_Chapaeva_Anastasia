@@ -17,13 +17,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("FileStorage", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Хранилище", "GetPublicDocuments", "Storage")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Управление", "GetAllDocuments", "Admin")</li>
+                    }
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li class="pull-right">@Html.ActionLink("Вход", "LogIn", "Account", "", new { @class = "" })</li>
+                        <li class="pull-right">@Html.ActionLink("Регистрация", "Registration", "Account", "", new { @class = "" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Мои документы", "GetUserDocuments", "UserDocuments")</li>
+                        <li>@Html.ActionLink("Доступные документы", "GetAvailableDocuments", "AvailableDocuments")</li>
+                        <li class="pull-right">@Html.ActionLink("Выход", "LogOut", "Account")</li> 
+                    }
                 </ul>
             </div>
         </div>
@@ -35,6 +48,7 @@
             <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
         </footer>
     </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

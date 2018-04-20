@@ -1,0 +1,22 @@
+﻿@model FileStorage.Models.RemoveDocViewModel
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        
+        <h4 class="text-center">Удаление</h4>
+    </div>
+    <div class="modal-body">
+        <div class="text-center">
+                Удалить файл "@Model.Title"?
+        </div>
+        <br />
+        <div class="text-center">
+            @using (Html.BeginForm())
+            {
+                @Html.RadioButtonFor(m => m.DocumentID, Model.DocumentID, new { @class = "hidden" })
+                <button type="submit" class="btn">Удалить</button>
+            }
+        </div>
+    </div>
+</div>

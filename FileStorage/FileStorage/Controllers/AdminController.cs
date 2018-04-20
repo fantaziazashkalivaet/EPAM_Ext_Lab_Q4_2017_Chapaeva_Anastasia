@@ -1,29 +1,26 @@
 ﻿namespace FileStorage.Controllers
 {
-    using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
     using AutoMapper;
     using DAL.Interfaces;
     using DAL.Models;
     using Models;
 
-    [Authorize]
-    public class UserDocumentsController : Controller
+    [Authorize(Roles = "Admin")]
+    public class AdminController : Controller
     {
         private const int PageSize = 12;
         private IFileRepository fileRepository;
         private IUserRepository userRepository;
         private ITagRepository tagRepository;
         private IAccessRepository accessRepository;
-
-        public UserDocumentsController(
-            IFileRepository fileRepositoryParam, 
+        
+        public AdminController(
+            IFileRepository fileRepositoryParam,
             IUserRepository userRepositoryParam,
-            ITagRepository tagRepositoryParam,
+             ITagRepository tagRepositoryParam,
             IAccessRepository accessRepositoryParam)
         {
             fileRepository = fileRepositoryParam;
@@ -32,12 +29,11 @@
             accessRepository = accessRepositoryParam;
         }
 
-        public ActionResult GetUserDocuments(int page = 1)
+        public ActionResult GetAllDocuments(int page = 1)
         {
-            var userId = GetUserId(); 
-
             var model = new DocumentsViewModel();
-            model.Documents = fileRepository.SearchUsersDocuments(null, string.Empty, userId)
+
+            model.Documents = fileRepository.SearchDocuments(null, string.Empty)
                 .OrderBy(d => d.DocumentID)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize);
@@ -46,7 +42,7 @@
             {
                 PageNumber = page,
                 PageSize = PageSize,
-                TotalItems = fileRepository.SearchUsersDocuments(null, string.Empty, userId).Count()
+                TotalItems = fileRepository.SearchDocuments(null, string.Empty).Count()
             };
 
             return View(model);
@@ -66,9 +62,7 @@
                 }
             }
 
-            var userId = GetUserId();
-
-            model.Documents = fileRepository.SearchUsersDocuments(tags, model.Title, userId)
+            model.Documents = fileRepository.SearchDocuments(tags, model.Title)
                 .OrderBy(d => d.DocumentID)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize);
@@ -77,7 +71,7 @@
             {
                 PageNumber = page,
                 PageSize = PageSize,
-                TotalItems = fileRepository.SearchUsersDocuments(tags, model.Title, userId).Count()
+                TotalItems = fileRepository.SearchDocuments(tags, model.Title).Count()
             };
             model.Tags = tagRepository.GetTags() as List<Tag>;
 
@@ -100,53 +94,10 @@
         public ActionResult RemoveFile(RemoveDocViewModel doc)
         {
             fileRepository.DeleteDocument(
-                doc.DocumentID, 
+                doc.DocumentID,
                 fileRepository.GetDocument(doc.DocumentID).AccessID);
 
-            return RedirectToAction("GetUserDocuments");
-        }
-
-        public ActionResult Create()
-        {
-            return PartialView();
-        }
-
-        [HttpPost]
-        public ActionResult Create(Document doc, HttpPostedFileBase uploadDoc)
-        {
-            if (ModelState.IsValid && uploadDoc != null)
-            {
-                byte[] docData = null;
-
-                using (var binaryReader = new BinaryReader(uploadDoc.InputStream))
-                {
-                    docData = binaryReader.ReadBytes(uploadDoc.ContentLength);
-                }
-
-                doc.Doc = docData;
-                doc.Date = DateTime.Now;
-                doc.Title = uploadDoc.FileName.Remove(uploadDoc.FileName.LastIndexOf("."));
-                doc.UserID = userRepository.SearchUserByLogin(User.Identity.Name).UserID;
-                doc.AccessID = DocumentAccess.Public;
-                doc.Tag = new Tag();
-                doc.Tag.TagName = Path.GetExtension(uploadDoc.FileName);
-                doc.Tag.TagID = tagRepository.GetTagID(doc.Tag.TagName);
-
-                if (doc.Tag.TagID != 0)
-                {
-                    fileRepository.CreateDocument(doc);
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Файлы этого типа не доступны для загрузки в хранилище");
-                    return PartialView();
-                }
-
-                return RedirectToAction("GetUserDocuments");
-            }
-
-            ModelState.AddModelError(string.Empty, "Что-то пошло не так");
-            return PartialView();
+            return RedirectToAction("GetAllDocuments");
         }
 
         public ActionResult ChangeDocAccess(int docId, DocumentAccess oldIdAccess)
@@ -170,7 +121,7 @@
                 accessRepository.ChangeAccess(model.DocumentID, model.NewAccess, model.OldAccess);
             }
 
-            return RedirectToAction("GetUserDocuments");
+            return RedirectToAction("GetAllDocuments");
         }
 
         public ActionResult ChangeUserAccess(int docId)
@@ -201,18 +152,13 @@
                     Login = user.Login
                 };
 
-                if (userInfo.UserID != GetUserId())
+                if (userInfo.UserID != fileRepository.GetHolder(model.DocumentID))
                 {
                     accessRepository.ChangePartialAccessToUser(userInfo.UserID, model.DocumentID);
                 }
             }
 
-            return RedirectToAction("GetUserDocuments");
-        }
-
-        private int GetUserId()
-        {
-            return userRepository.SearchUserByLogin(User.Identity.Name).UserID;
+            return RedirectToAction("GetAllDocuments");
         }
     }
 }

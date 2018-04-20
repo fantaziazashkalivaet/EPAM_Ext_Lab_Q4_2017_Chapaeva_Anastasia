@@ -1,0 +1,26 @@
+﻿@model FileStorage.DAL.Models.Document
+    <div class="modal-content">
+        <div class="modal-header text-center">
+            <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+            <h4>Добавить документ</h4>
+        </div>
+        <div class="modal-body text-center">
+
+            @using (Html.BeginForm("Create", "UserDocuments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <div class="editor-label">Файл изображения</div>
+                    <div class="editor-field">
+                        <input type="file" name="uploadDoc" />
+                    </div>
+                    <br />
+                    <p>
+                        <input type="submit" value="Добавить" class="btn btn-default" />
+                    </p>
+                </fieldset>
+            }
+
+
+        </div>
+    </div>

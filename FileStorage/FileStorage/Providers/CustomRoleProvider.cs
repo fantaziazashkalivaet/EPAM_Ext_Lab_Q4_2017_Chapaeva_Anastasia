@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Security;
-using System.Web;
-using FileStorage.DAL;
-
-namespace FileStorage
+﻿namespace FileStorage.Providers
 {
+    using System;
+    using System.Web.Security;
+    using DAL;
+
     public class CustomRoleProvider : RoleProvider
     {
-        //DI с UserRepository??
         public override string ApplicationName
         {
             get
@@ -21,6 +17,39 @@ namespace FileStorage
             {
                 throw new NotImplementedException();
             }
+        }
+
+        public override string[] GetRolesForUser(string username)
+        {
+            string[] roles = new string[] { };
+
+            var ur = new UserRepository();
+            var user = ur.SearchUserByLogin(username);
+
+            if (user != null) 
+            {
+                if (user.Role != null)
+                {
+                    roles = new string[] { user.Role.Name };
+                }
+            }
+
+            return roles;
+        }
+
+        public override bool IsUserInRole(string username, string roleName)
+        {
+            bool outputResult = false;
+
+            var ur = new UserRepository();
+            var user = ur.SearchUserByLogin(username);
+
+            if (user.Role.Name == roleName)
+            {
+                outputResult = true;
+            }
+
+            return outputResult;
         }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
@@ -48,42 +77,9 @@ namespace FileStorage
             throw new NotImplementedException();
         }
 
-        public override string[] GetRolesForUser(string username)
-        {
-            string[] roles = new string[] { };
-
-            var ur = new UserRepository();
-            var user = ur.SearchUserByLogin(username);
-
-            if (user != null) //или newUser?? 
-            {
-                if (user.Role != null) // или roleID != 0?? 
-                {
-                    roles = new string[] { user.Role.Name };
-                }
-            }
-
-            return roles;
-        }
-
         public override string[] GetUsersInRole(string roleName)
         {
             throw new NotImplementedException();
-        }
-
-        public override bool IsUserInRole(string username, string roleName)
-        {
-            bool outputResult = false;
-
-            var ur = new UserRepository();
-            var user = ur.SearchUserByLogin(username);
-
-            if (user.Role.Name == roleName)
-            {
-                outputResult = true;
-            }
-
-            return outputResult;
         }
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)

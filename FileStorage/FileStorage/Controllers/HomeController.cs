@@ -1,16 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace FileStorage.Controllers
+﻿namespace FileStorage.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+
+    [Authorize]
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception)
+            {
+                return View("Home/Error");
+            }
         } 
     }
 }

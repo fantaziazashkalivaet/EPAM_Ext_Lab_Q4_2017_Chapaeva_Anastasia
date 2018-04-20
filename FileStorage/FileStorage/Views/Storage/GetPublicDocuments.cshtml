@@ -1,0 +1,67 @@
+﻿@using FileStorage.Helpers
+@model FileStorage.Models.DocumentsViewModel
+@{
+    ViewBag.Title = "Storage";
+}
+
+<h2>FileStorage</h2>
+<br />
+@using (Html.BeginForm())
+{
+    <div class="well form-search form-inline">
+        <div>
+            <span>
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "search-query form-control span2" } })
+            </span>
+            <span>
+                <button type="submit" class="btn">Поиск</button>
+            </span>
+        </div>
+        <div>
+            @Html.ListBoxFor(m => m.Filter, new SelectList(Model.Tags.Select(t => t.TagName).ToArray()), new { @class = "form-control" })
+            <div class="text-info">Для выбора нескольких форматов зажмите Ctrl</div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    @foreach (var doc in Model.Documents)
+    {
+        if(doc.Title.Count() > 12)
+        {
+            doc.Title = string.Format("{0}..", doc.Title.Substring(0, 12));
+        }
+
+        <div class="col-xs-3 text-center doc" display="inline-block">
+            <h3>@doc.Title</h3>
+            <h5>@doc.Tag.TagName</h5>
+            @Html.ActionLink("Подробнее", "Details", new { id = doc.DocumentID }, new { @class = "btn btn-default btn-lg compItem" })
+        </div>
+    }
+    <br />
+</div>
+<div class="btn-group-sm pull-right">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("GetPublicDocuments", new { model = Model, page = x }))
+</div>  
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+           $(".compItem").click(function (e) {
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+    </script>
+}
