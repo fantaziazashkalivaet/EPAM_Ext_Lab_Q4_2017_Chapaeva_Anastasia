@@ -40,7 +40,7 @@
             }
 
             user.Password = userRepository.GetHashString(user.Password);
-            if (userRepository.CheckUser(user.Login))
+            if (userRepository.CheckLogin(user.Login, user.Password))
             {
                 FormsAuthentication.SetAuthCookie(user.Login, true);
                 return RedirectToAction("Index", "Home");
