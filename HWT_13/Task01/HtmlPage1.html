@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript" charset="utf-8" src="Task01.js"></script>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <h1>Задания JavaScript</h1>
+    <h2>Task 02</h2>
+    <p>
+        Написать функцию, на вход которой приходит строка, состоящая из 
+        нескольких слов. Слова разделены пробельными символами (пробел, 
+        табуляция) и знаками препинания (?!:;,.). Нужно вернуть строку, в 
+        которой будут удалены все символы, повторяющиеся хоть в одном из 
+        слов более одного раза. 
+        Регулярные выражения не использовать.
+    </p>
+    <h3>Решение</h3>
+    <label for="calc">Введите пример: </label>
+    <input id="string" value="у попа была собака соба,:ка" style="width: 500px;" />
+    <button type="submit" onclick="task01()">Вычислить</button>
+    <br>
+    <label>Результат:</label>
+    <span id="result1"></span>
+</body>
+</html>

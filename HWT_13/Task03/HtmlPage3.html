@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="Style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" charset="utf-8" src="Task03.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <h1>Задания по JavaScript</h1>
+    <h2>Task 03</h2>
+    <p>
+        Создать страницу с приблизительно таким внешним видом
+        При нажатии кнопок '>' и '<' выделенные элементы из одного
+        списка перекидываются в другой. При этом выделение с них снимается
+        и они добавляются в конец списка. Если ни один из элементов не
+        выделен, выводится сообщение.
+        При нажатии кнопок '>>' и '<<' все элементы из одного списка
+        перекидываются в другой.
+    </p>
+    <h3>Решение</h3>
+        <div class="selectForm container">
+            <div class="col-sm-3">
+                <select name="list" class="list form-control" multiple>
+                    <option class="opt" value="Option1">Option1</option>
+                    <option class="opt" value="option">Option2</option>
+                    <option class="opt" value="option">Option3</option>
+                </select>
+            </div>
+            <div class="col-sm-1">
+                <p><input class="button SelectAll" type="button" value=">>" onclick="SelectAll()" /></p>
+                <p><input class="button SelectItem" type="button" value=">" onclick="SelectItem()" /></p>
+                <p><input class="button RemoveItem" type="button" value="<" onclick="RemoveItem()" /></p>
+                <p><input class="button RemoveAll" type="button" value="<<" onclick="RemoveAll()" /></p>
+            </div>
+                <div class="col-sm-3">
+                    <select name="selectedItems" class="selectedItems form-control" multiple>
+                        <option class="opt" value="option">Option4</option>
+                        <option class="opt" value="option">Option5</option>
+                    </select>
+                </div>
+            </div>
+</body>
+</html>
